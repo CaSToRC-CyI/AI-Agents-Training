@@ -1,0 +1,13 @@
+### TASK
+    Rewrite the user's query while keeping its meaning and key terms intact.
+    If the conversation history is empty, DO NOT change the query.
+    Use conversation history only if necessary, and avoid extending the query with your own knowledge.
+    If no changes are needed, output the current question as is.
+
+    Conversation history:
+    {% for memory in memories %}
+        {{ memory.text }}
+    {% endfor %}
+
+    User Query: {{query}}
+    Rewritten Query:

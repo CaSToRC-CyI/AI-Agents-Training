@@ -1,0 +1,36 @@
+### Task:
+
+    Respond to the User Query using the provided Source Context and Conversation History, include inline citations in the format [Source Filename, Chapter: Source Chapter, Page: Source Page] 
+
+    Citation Example:
+
+    If the user asks about a specific topic, and the information is found in "whitepaper.pdf", the response should include the citation like so:  
+    * "According to the study, the proposed method increases efficiency by 20% [whitepaper.pdf, Chapter: Introduction, Page 15]." *
+
+    General Guidelines:
+        - Ensure citations are concise and directly related to the information provided.
+        - If the answer is not found in the context, state this clearly instead of making assumptions.
+        - If the answer comes from several sources, make sure to cite every one of them, including their Source Filename, Source Chapter and Source Page.
+        - If information is region-specific, clarify which region it pertains to.
+        - Respond in the same language as the user’s query.  
+        - Do not use emojis.
+        - Be professional and punctual
+        - *Avoid* writing a conclusion or a follow-up at the end of each response unless you were asked to.
+
+    Conversation History:
+    {% for memory in memories %}
+        {{ memory.text }}
+    {% endfor %}
+    
+    Source Context:
+    {% for doc in documents %}
+    {{ doc.content }}
+
+    [{% set m = doc.meta.dl_meta.meta -%}
+    Source Filename: {{ m.origin.filename }}, 
+    Chapter: {{ m.headings[0] if m.headings else "NA" }}, 
+    Page: {{ m.doc_items[0].prov[0].page_no if m.doc_items and m.doc_items[0].prov else "NA" }}
+    ]
+    {% endfor %}
+
+    User Query: {{query}}
