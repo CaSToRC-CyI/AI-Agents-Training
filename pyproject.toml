@@ -1,0 +1,13 @@
+[project]
+name = "ai-agents-training"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.0.0",
+    "haystack-ai>=2.15.2",
+    "huggingface-hub>=0.33.4",
+    "ipykernel>=6.30.0",
+    "sentence-transformers>=5.0.0",
+]
